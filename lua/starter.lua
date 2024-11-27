@@ -12,12 +12,7 @@ local M = {}
 ---@param stats.memory number The memory usage in megabytes
 ---@param stats.plugins number The amount of plugins loaded
 function M.make_footer(stats)
-    return string.format(
-        footer,
-        stats.time or -1,
-        stats.memory or -1,
-        stats.plugins or -1
-    )
+    return string.format(footer, stats.time or -1, stats.memory or -1, stats.plugins or -1)
 end
 
 return M

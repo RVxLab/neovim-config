@@ -1,12 +1,12 @@
-local utils = require('utils')
+local utils = require("utils")
 
 local add, later = MiniDeps.add, MiniDeps.later
 
-later(function ()
+later(function()
     add({
         source = "nvim-telescope/telescope-fzf-native.nvim",
         hooks = {
-            post_checkout = function ()
+            post_checkout = function()
                 vim.fn.system("make")
             end,
         },
@@ -29,7 +29,7 @@ later(function ()
     })
 
     local actions = require("telescope.actions")
-    local telescope = require('telescope')
+    local telescope = require("telescope")
     telescope.setup({
         defaults = {
             mappings = {
@@ -53,7 +53,7 @@ later(function ()
                 auto_quoting = true,
                 mappings = {
                     i = {
-                        ["<C-k>"] = require('telescope-live-grep-args.actions').quote_prompt(),
+                        ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
                     },
                 },
             },
@@ -65,10 +65,14 @@ later(function ()
 
     local builtin = require("telescope.builtin")
     utils.n_keymap("<leader>ff", builtin.find_files, "Find: [F]iles")
-    utils.n_keymap("<leader>fF", utils.bind(builtin.find_files, {
-        prompt_title = "All files",
-        no_ignore = true,
-    }), "Find: All [F]iles")
+    utils.n_keymap(
+        "<leader>fF",
+        utils.bind(builtin.find_files, {
+            prompt_title = "All files",
+            no_ignore = true,
+        }),
+        "Find: All [F]iles"
+    )
     utils.n_keymap("<leader>fs", telescope.extensions.live_grep_args.live_grep_args, "Find: [S]earch")
     utils.n_keymap("<leader>fb", builtin.buffers, "Find: [B]uffers")
 end)

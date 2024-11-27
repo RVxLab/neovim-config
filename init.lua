@@ -1,9 +1,8 @@
 -- General settings
-require('settings')
+require("settings")
 
 -- Set up Mini.nvim
-require('mini')
+require("mini")
 
 -- Set up plugins
-require('plugins')
-
+require("plugins")

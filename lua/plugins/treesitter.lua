@@ -1,8 +1,8 @@
-local utils = require('utils')
+local utils = require("utils")
 
 local add, later = MiniDeps.add, MiniDeps.later
 
-later(function ()
+later(function()
     add({
         source = "nvim-treesitter/nvim-treesitter",
         depends = {
@@ -11,8 +11,8 @@ later(function ()
         checkout = "master",
         monitor = "main",
         hooks = {
-            post_checkout = function ()
-                vim.cmd('TSUpdate')
+            post_checkout = function()
+                vim.cmd("TSUpdate")
             end,
         },
     })
@@ -22,14 +22,14 @@ later(function ()
     add("nvim-treesitter/nvim-treesitter-textobjects")
 
     -- Add a parser for Laravel Blade
-    local parser_configs = require("nvim-treesitter.parsers").get_parser_configs();
+    local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
     parser_configs.blade = {
         install_info = {
             url = "https://github.com/EmranMR/tree-sitter-blade",
-            files = {"src/parser.c"},
+            files = { "src/parser.c" },
             branch = "main",
         },
-        filetype = "blade"
+        filetype = "blade",
     }
 
     -- Load treesitter
@@ -108,7 +108,7 @@ later(function ()
     })
 
     -- Set up treesitter context
-    require('treesitter-context').setup({
+    require("treesitter-context").setup({
         line_numbers = false,
         max_lines = 5,
         multiline_threshold = 3,
@@ -126,4 +126,3 @@ later(function ()
         require("treesitter-context").go_to_context(vim.v.count1)
     end, "Go to parent [c]ontext")
 end)
-

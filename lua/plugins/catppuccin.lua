@@ -1,12 +1,12 @@
 local add, now = MiniDeps.add, MiniDeps.now
 
-now(function ()
+now(function()
     add({
         source = "catppuccin/nvim",
         name = "catppuccin",
     })
 
-    require('catppuccin').setup({
+    require("catppuccin").setup({
         flavour = "macchiato",
     })
 
