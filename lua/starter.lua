@@ -1,6 +1,6 @@
 local footer = [[
 Startup Time:   %dms
-Memory usage:   %dMB
+Memory usage:   %.2fMB
 Plugins:        %s
 ]]
 
