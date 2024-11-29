@@ -9,5 +9,7 @@ later(function()
         checkout = "v0.6.2",
     })
 
-    require("blink.cmp").setup({})
+    require("blink.cmp").setup({
+        keymap = "enter",
+    })
 end)
