@@ -42,7 +42,4 @@ end)
 
 later(function()
     require("mini.splitjoin").setup()
-    require("mini.files").setup()
-
-    utils.n_keymap("-", MiniFiles.open, "Browse files")
 end)
