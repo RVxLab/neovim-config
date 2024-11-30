@@ -68,7 +68,79 @@ later(function ()
         },
     })
 
-    local config = {}
+    local config = {
+        ts_ls = {
+            filetypes = {
+                "javascript",
+                "javascriptreact",
+                "javascript.jsx",
+                "typescript",
+                "typescriptreact",
+                "typescript.tsx",
+                "vue",
+            },
+            inlay_hint = {
+                enable = false,
+            },
+            init_options = {
+                plugins = {
+                    {
+                        name = "@vue/typescript-plugin",
+                        location = utils.invoke(function()
+                            local registry = require("mason-registry")
+                            local plugin_path = registry.get_package("vue-language-server"):get_install_path()
+                            return plugin_path .. "/node_modules/@vue/language-server"
+                        end),
+                        languages = { "vue" },
+                    },
+                },
+                preferences = {
+                    includeInlayParameterNameHints = "all",
+                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                    includeInlayFunctionParameterTypeHints = true,
+                    includeInlayVariableTypeHints = true,
+                    includeInlayPropertyDeclarationTypeHints = true,
+                    includeInlayFunctionLikeReturnTypeHints = true,
+                    includeInlayEnumMemberValueHints = true,
+                    importModuleSpecifierPreference = "non-relative",
+                },
+            },
+        },
+        lua_ls = {
+            settings = {
+                Lua = {
+                    runtime = { version = "LuaJIT" },
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME,
+                            "${3rd}/luv/library",
+                            unpack(vim.api.nvim_get_runtime_file("", true)),
+                        },
+                    },
+                    hint = {
+                        enable = true,
+                    },
+                    completion = {
+                        callSnippet = "Replace",
+                    },
+                },
+            },
+        },
+        intelephense = {
+            filetypes = { "php", "blade" },
+            settings = {
+                intelephense = {
+                    environment = {
+                        phpVersion = "8.3.0",
+                    },
+                },
+            },
+        },
+    }
 
     require("mason-tool-installer").setup({
         ensure_installed = {
