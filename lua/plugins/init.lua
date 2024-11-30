@@ -8,6 +8,7 @@ require("mini.deps").setup({
 })
 
 -- Add the plugins
+require("plugins.snacks")
 require("plugins.which-key")
 require("plugins.mini")
 require("plugins.catppuccin")

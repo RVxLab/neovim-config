@@ -10,5 +10,6 @@ now(function ()
         mode = "n",
         { "[", group = "Previous" },
         { "]", group = "Next" },
+        { "<leader>g", group = "[G]it" },
     })
 end)
