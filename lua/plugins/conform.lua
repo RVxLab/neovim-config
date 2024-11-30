@@ -17,13 +17,15 @@ later(function()
     add("stevearc/conform.nvim")
 
     require("conform").setup({
-        php = { "pint", "php-cs-fixer" },
-        javascript = prettier_opts,
-        typescript = prettier_opts,
-        typescriptreact = prettier_opts,
-        blade = prettier_opts,
-        lua = { "stylua" },
-        sh = { "shellcheck" },
+        formatters_by_ft = {
+            php = { "pint", "php-cs-fixer" },
+            javascript = prettier_opts,
+            typescript = prettier_opts,
+            typescriptreact = prettier_opts,
+            blade = prettier_opts,
+            lua = { "stylua" },
+            sh = { "shellcheck" },
+        },
         format_on_save = format_on_save_options,
     })
 
