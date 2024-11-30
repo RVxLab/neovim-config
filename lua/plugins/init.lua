@@ -11,6 +11,7 @@ require("mini.deps").setup({
 require("plugins.mini")
 require("plugins.catppuccin")
 require("plugins.lazydev")
+require("plugins.diagnostics")
 require("plugins.treesitter")
 require("plugins.telescope")
 require("plugins.cmp")
