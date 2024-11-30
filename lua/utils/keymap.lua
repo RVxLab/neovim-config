@@ -1,17 +1,45 @@
 local M = {}
 
+---Create a keymapping
+---@param modes string|table
+---@param mapping string
+---@param action function|string
+---@param description string|nil
+---@param opts table|nil
+function M.keymap(modes, mapping, action, description, opts)
+    opts = vim.tbl_extend("keep", opts or {}, {
+        desc = description,
+        silent = true,
+    })
+
+    vim.keymap.set(modes, mapping, action, opts)
+end
+
 ---Shortcut for a normal mode keymapping
 ---@param mapping string
 ---@param action function|string
 ---@param description string|nil
 ---@param opts table|nil
 function M.n_keymap(mapping, action, description, opts)
-    opts = vim.tbl_extend("keep", opts or {}, {
-        desc = description,
-        silent = true,
-    })
+    M.keymap("n", mapping, action, description, opts)
+end
 
-    vim.keymap.set("n", mapping, action, opts)
+---Shortcut for an execute mode keymapping
+---@param mapping string
+---@param action function|string
+---@param description string|nil
+---@param opts table|nil
+function M.x_keymap(mapping, action, description, opts)
+    M.keymap("x", mapping, action, description, opts)
+end
+
+---Shortcut for a visual mode keymapping
+---@param mapping string
+---@param action function|string
+---@param description string|nil
+---@param opts table|nil
+function M.v_keymap(mapping, action, description, opts)
+    M.keymap("v", mapping, action, description, opts)
 end
 
 ---Create a lazy keybinding for lazy.nvim

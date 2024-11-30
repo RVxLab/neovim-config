@@ -1,8 +1,8 @@
-local fn = require("rvxlab.utils.function")
-local keymap = require("rvxlab.utils.keymap")
-local os_utils = require("rvxlab.utils.os")
-local string_utils = require("rvxlab.utils.string")
-local table_utils = require("rvxlab.utils.table")
+local fn = require("utils.function")
+local keymap = require("utils.keymap")
+local os_utils = require("utils.os")
+local string_utils = require("utils.string")
+local table_utils = require("utils.table")
 
 local M = {}
 
@@ -15,7 +15,10 @@ M.unpack = fn.unpack
 
 -- Keymaps
 M.lazy_key = keymap.lazy_key
+M.keymap = keymap.keymap
 M.n_keymap = keymap.n_keymap
+M.v_keymap = keymap.v_keymap
+M.x_keymap = keymap.x_keymap
 
 -- OS
 M.is_macos = os_utils.is_macos
