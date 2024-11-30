@@ -11,5 +11,14 @@ later(function()
 
     require("blink.cmp").setup({
         keymap = "enter",
+        completion = {
+            enabled_providers = {
+                "lsp",
+                "path",
+                "snippets",
+                "buffer",
+                "lazydev",
+            },
+        },
     })
 end)
