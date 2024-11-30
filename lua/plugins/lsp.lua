@@ -28,7 +28,7 @@ local function on_attach(client, buffer)
     keymap("<leader>cr", telescope.lsp_references, "Find references", buffer)
     keymap("<leader>ci", telescope.lsp_implementations, "Find implementations", buffer)
     keymap("<leader>cd", telescope.lsp_definitions, "Go to definition", buffer)
-    keymap("<leader>cti", function ()
+    keymap("<leader>i", function ()
         local filter = {
             bufnr = buffer,
         }
@@ -165,5 +165,10 @@ later(function ()
 
             require("lspconfig")[server_name].setup(server_config)
         end,
+    })
+
+    require("which-key").add({
+        mode = "n",
+        { "<leader>c", group = "[C]ode" },
     })
 end)

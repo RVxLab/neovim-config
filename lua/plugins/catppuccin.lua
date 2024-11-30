@@ -8,6 +8,9 @@ now(function()
 
     require("catppuccin").setup({
         flavour = "macchiato",
+        integrations = {
+            which_key = true,
+        },
     })
 
     vim.cmd("colorscheme catppuccin")

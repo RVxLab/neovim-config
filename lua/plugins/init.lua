@@ -8,6 +8,7 @@ require("mini.deps").setup({
 })
 
 -- Add the plugins
+require("plugins.which-key")
 require("plugins.mini")
 require("plugins.catppuccin")
 require("plugins.lazydev")

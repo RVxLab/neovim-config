@@ -75,4 +75,9 @@ later(function()
     )
     utils.n_keymap("<leader>fs", telescope.extensions.live_grep_args.live_grep_args, "Find: [S]earch")
     utils.n_keymap("<leader>fb", builtin.buffers, "Find: [B]uffers")
+
+    require("which-key").add({
+        mode = "n",
+        { "<leader>f", group = "[F]ind" },
+    })
 end)
