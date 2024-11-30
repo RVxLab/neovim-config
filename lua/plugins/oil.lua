@@ -1,4 +1,4 @@
-local utils = require('utils')
+local utils = require("utils")
 local add, later = MiniDeps.add, MiniDeps.later
 
 later(function()

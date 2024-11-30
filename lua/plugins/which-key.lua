@@ -1,6 +1,6 @@
 local add, now = MiniDeps.add, MiniDeps.now
 
-now(function ()
+now(function()
     add("folke/which-key.nvim")
 
     local wk = require("which-key")

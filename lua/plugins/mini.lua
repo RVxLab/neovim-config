@@ -5,12 +5,12 @@ local function make_footer_renderer()
     local startup_time_ms = -1
     local plugin_count = -1
 
-    vim.defer_fn(function ()
+    vim.defer_fn(function()
         plugin_count = #MiniDeps.get_session()
         MiniStarter.refresh()
     end, 50)
 
-    return function ()
+    return function()
         local memory_usage_mb = vim.uv.getrusage().maxrss / 1024
 
         return require("starter").make_footer({

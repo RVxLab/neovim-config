@@ -1,6 +1,6 @@
 local add, later = MiniDeps.add, MiniDeps.later
 
-later(function ()
+later(function()
     add("folke/lazydev.nvim")
 
     require("lazydev").setup({

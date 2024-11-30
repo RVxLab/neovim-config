@@ -28,7 +28,7 @@ local function on_attach(client, buffer)
     keymap("<leader>cr", telescope.lsp_references, "Find references", buffer)
     keymap("<leader>ci", telescope.lsp_implementations, "Find implementations", buffer)
     keymap("<leader>cd", telescope.lsp_definitions, "Go to definition", buffer)
-    keymap("<leader>i", function ()
+    keymap("<leader>i", function()
         local filter = {
             bufnr = buffer,
         }
@@ -38,7 +38,7 @@ local function on_attach(client, buffer)
     end, "Toggle [i]nlay hints", buffer)
 end
 
-later(function ()
+later(function()
     add({
         source = "neovim/nvim-lspconfig",
         depends = {
@@ -155,7 +155,7 @@ later(function ()
     local cmp = require("blink.cmp")
 
     require("mason-lspconfig").setup_handlers({
-        function (server_name)
+        function(server_name)
             local capabilities = cmp.get_lsp_capabilities({}, true)
 
             local server_config = vim.tbl_deep_extend("keep", config[server_name] or {}, {
