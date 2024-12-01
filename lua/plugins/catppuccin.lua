@@ -9,6 +9,7 @@ now(function()
     require("catppuccin").setup({
         flavour = "macchiato",
         integrations = {
+            neotest = true,
             which_key = true,
         },
     })
