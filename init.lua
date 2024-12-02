@@ -6,3 +6,6 @@ require("mini")
 
 -- Set up plugins
 require("plugins")
+
+-- Register autocommands
+require("autocmd")
