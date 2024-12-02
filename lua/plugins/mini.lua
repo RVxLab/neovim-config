@@ -31,9 +31,9 @@ now(function()
         header = require("art.header"),
         items = {
             starter.sections.recent_files(10, true, true),
-            { name = "Update dependencies", action = "DepsUpdate", section = "Dependencies" },
-            { name = "Save dependency snapshot", action = "DepsSaveSnap", section = "Dependencies" },
-            { name = "Load dependency snapshot", action = "DepsLoadSnap", section = "Dependencies" },
+            { name = "Update dependencies", action = MiniDeps.update, section = "Dependencies" },
+            { name = "Save dependency snapshot", action = MiniDeps.snap_save, section = "Dependencies" },
+            { name = "Load dependency snapshot", action = MiniDeps.snap_load, section = "Dependencies" },
         },
         silent = true,
         footer = make_footer_renderer(),
