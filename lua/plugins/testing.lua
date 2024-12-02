@@ -3,7 +3,7 @@ local add, later = MiniDeps.add, MiniDeps.later
 
 later(function()
     add({
-        source = "nvim-neotest",
+        source = "nvim-neotest/neotest",
         depends = {
             "nvim-neotest/nvim-nio",
             "nvim-lua/plenary.nvim",
