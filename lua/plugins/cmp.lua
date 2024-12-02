@@ -6,7 +6,7 @@ later(function()
         depends = {
             "rafamadriz/friendly-snippets",
         },
-        checkout = "v0.6.2",
+        checkout = "v0.7.1",
     })
 
     require("blink.cmp").setup({
@@ -18,6 +18,9 @@ later(function()
                 "snippets",
                 "buffer",
                 "lazydev",
+            },
+            ghost_text = {
+                enabled = true,
             },
         },
     })
