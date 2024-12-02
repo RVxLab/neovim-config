@@ -10,14 +10,17 @@ later(function()
     })
 
     require("blink.cmp").setup({
-        keymap = "enter",
-        completion = {
-            enabled_providers = {
-                "lsp",
-                "path",
-                "snippets",
-                "buffer",
-                "lazydev",
+        keymap = {
+            preset = "super-tab",
+        },
+        sources = {
+            completion = {
+                enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
+            },
+            providers = {
+                -- dont show LuaLS require statements when lazydev has items
+                lsp = { fallback_for = { "lazydev" } },
+                lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
             },
             ghost_text = {
                 enabled = true,
