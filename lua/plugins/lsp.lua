@@ -58,7 +58,6 @@ later(function()
             "intelephense",
             "lua_ls",
             "jsonls",
-            "phpactor",
             "rust_analyzer",
             "tailwindcss",
             "ts_ls",
