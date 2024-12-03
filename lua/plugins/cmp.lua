@@ -16,6 +16,9 @@ later(function()
         sources = {
             completion = {
                 enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
+                list = {
+                    selection = "manual",
+                },
             },
             providers = {
                 -- dont show LuaLS require statements when lazydev has items
