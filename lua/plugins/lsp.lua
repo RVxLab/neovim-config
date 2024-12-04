@@ -28,6 +28,7 @@ local function on_attach(client, buffer)
     keymap("<leader>cr", telescope.lsp_references, "Find references", buffer)
     keymap("<leader>ci", telescope.lsp_implementations, "Find implementations", buffer)
     keymap("<leader>cd", telescope.lsp_definitions, "Go to definition", buffer)
+    keymap("<leader>cn", vim.lsp.buf.rename, "Re[n]ame symbol", buffer)
     keymap("<leader>i", function()
         local filter = {
             bufnr = buffer,
@@ -155,10 +156,8 @@ later(function()
 
     require("mason-lspconfig").setup_handlers({
         function(server_name)
-            local capabilities = cmp.get_lsp_capabilities({}, true)
-
             local server_config = vim.tbl_deep_extend("keep", config[server_name] or {}, {
-                capabilities = capabilities,
+                capabilities = utils.get_capabilities(),
                 on_attach = on_attach,
             })
 

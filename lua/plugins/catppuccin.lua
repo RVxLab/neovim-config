@@ -11,6 +11,7 @@ now(function()
         integrations = {
             neotest = true,
             which_key = true,
+            blink_cmp = true,
         },
     })
 

@@ -3,6 +3,7 @@ local keymap = require("utils.keymap")
 local os_utils = require("utils.os")
 local string_utils = require("utils.string")
 local table_utils = require("utils.table")
+local capability_utils = require("utils.capability")
 
 local M = {}
 
@@ -34,5 +35,8 @@ M.string_join = string_utils.string_join
 M.keys = table_utils.keys
 M.map = table_utils.map
 M.values = table_utils.values
+
+-- Capabilities
+M.get_capabilities = capability_utils.get_capabilities
 
 return M
