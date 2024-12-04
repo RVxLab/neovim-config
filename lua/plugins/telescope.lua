@@ -2,13 +2,18 @@ local utils = require("utils")
 
 local add, later = MiniDeps.add, MiniDeps.later
 
+local function build_fzf_native(dep)
+    vim.cmd(string.format("cd %s", dep.path))
+    vim.fn.system("make")
+    vim.cmd("cd -")
+end
+
 later(function()
     add({
         source = "nvim-telescope/telescope-fzf-native.nvim",
         hooks = {
-            post_checkout = function()
-                vim.fn.system("make")
-            end,
+            post_checkout = build_fzf_native,
+            post_install = build_fzf_native,
         },
     })
 
