@@ -11,7 +11,7 @@ later(function()
 
     require("blink.cmp").setup({
         keymap = {
-            preset = "super-tab",
+            preset = "enter",
         },
         sources = {
             completion = {
@@ -19,14 +19,19 @@ later(function()
                 list = {
                     selection = "manual",
                 },
+                menu = {
+                    draw = {
+                        columns = {
+                            { "kind_icon", "kind" },
+                            { "label", "label_description", gap = 1 },
+                        },
+                    },
+                },
             },
             providers = {
                 -- dont show LuaLS require statements when lazydev has items
                 lsp = { fallback_for = { "lazydev" } },
                 lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
-            },
-            ghost_text = {
-                enabled = true,
             },
         },
     })
