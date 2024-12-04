@@ -1,4 +1,4 @@
-local fn = require("rvxlab.utils.function")
+local fn = require("utils.function")
 
 local M = {}
 
