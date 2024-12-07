@@ -5,8 +5,16 @@ later(function()
         source = "saghen/blink.cmp",
         depends = {
             "rafamadriz/friendly-snippets",
+            "folke/lazydev.nvim",
         },
         checkout = "v0.7.3",
+    })
+
+    require("lazydev").setup({
+        library = {
+            -- Only load luvit types when the `vim.uv` word is found
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
     })
 
     require("blink.cmp").setup({

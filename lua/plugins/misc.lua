@@ -32,14 +32,6 @@ later(function()
     add("folke/todo-comments.nvim")
     require("todo-comments").setup()
 
-    add("folke/lazydev.nvim")
-    require("lazydev").setup({
-        library = {
-            -- Only load luvit types when the `vim.uv` word is found
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        },
-    })
-
     add("lukas-reineke/indent-blankline.nvim")
     require("ibl").setup()
 end)
