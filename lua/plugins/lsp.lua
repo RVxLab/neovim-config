@@ -47,6 +47,7 @@ later(function()
             "williamboman/mason-lspconfig.nvim",
             "saghen/blink.cmp",
             "WhoIsSethDaniel/mason-tool-installer.nvim",
+            "jay-babu/mason-nvim-dap.nvim",
         },
     })
 
@@ -149,6 +150,13 @@ later(function()
             "luacheck",
             "shellcheck",
             "stylua",
+        },
+    })
+
+    require("mason-nvim-dap").setup({
+        ensure_installed = {
+            "js",
+            "php",
         },
     })
 

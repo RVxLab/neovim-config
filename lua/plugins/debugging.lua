@@ -1,28 +1,6 @@
 local utils = require("utils")
 local add, later = MiniDeps.add, MiniDeps.later
 
----@param paths table<integer, string>
----@return string|nil
-local function get_first_vscode_xdebug_path(paths)
-    for _, path in pairs(paths) do
-        local file = string.format("%s/out/phpDebug.js", path)
-
-        if vim.fn.filereadable(file) then
-            return file
-        end
-    end
-
-    return nil
-end
-
----@return table<integer, string>
-local function get_possible_vscode_xdebug_paths()
-    return {
-        -- Installed through Devenv
-        ".devenv/profile/share/vscode/extensions/xdebug.php-debug",
-    }
-end
-
 later(function()
     add({
         source = "mfussenegger/nvim-dap",
@@ -34,7 +12,6 @@ later(function()
     })
 
     local dap = require("dap")
-    dap.setup({})
 
     local dapui = require("dapui")
     require("nvim-dap-virtual-text").setup()
@@ -51,13 +28,22 @@ later(function()
     utils.n_keymap("<F9>", dap.step_out, "Step out")
 
     -- Set up adapters
-    local php_debug_js_path = get_first_vscode_xdebug_path(get_possible_vscode_xdebug_paths())
+    local exists, mason = pcall(require, "mason-registry")
 
-    if php_debug_js_path ~= nil then
+    if not exists then
+        return
+    end
+
+    -- PHP
+    local php_adapter = mason.get_package("php-debug-adapter")
+
+    if php_adapter then
         dap.adapters.php = {
             type = "executable",
             command = "node",
-            args = { php_debug_js_path },
+            args = {
+                string.format("%s/php-debug-adapter", php_adapter:get_install_path()),
+            },
         }
 
         dap.configurations.php = {
@@ -71,5 +57,32 @@ later(function()
         }
 
         vim.notify("Set up Xdebug with DAP")
+    end
+
+    -- JavaScript
+    local js_adapter = mason.get_package("js-debug-adapter")
+
+    if js_adapter then
+        dap.adapters["pwa-node"] = {
+            type = "server",
+            host = "localhost",
+            port = "${port}",
+            executable = {
+                command = "node",
+                args = {
+                    string.format("%s/js-debug-adapter", js_adapter:get_install_path()),
+                },
+            },
+        }
+
+        dap.configurations.javascript = {
+            {
+                type = "pwa-node",
+                request = "launch",
+                name = "Launch file",
+                program = "${file}",
+                cwd = "${workspaceFolder}",
+            },
+        }
     end
 end)
