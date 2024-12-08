@@ -8,10 +8,23 @@ later(function()
             "rcarriga/nvim-dap-ui",
             "nvim-neotest/nvim-nio",
             "theHamsta/nvim-dap-virtual-text",
+            {
+                source = "jay-babu/mason-nvim-dap.nvim",
+                depends = {
+                    "williamboman/mason.nvim",
+                },
+            },
         },
     })
 
     local dap = require("dap")
+
+    require("mason-nvim-dap").setup({
+        ensure_installed = {
+            "js",
+            "php",
+        },
+    })
 
     local dapui = require("dapui")
     require("nvim-dap-virtual-text").setup()
