@@ -1,3 +1,4 @@
+local utils = require("utils")
 local now, later = MiniDeps.now, MiniDeps.later
 
 now(function()
@@ -21,4 +22,14 @@ end)
 
 later(function()
     require("mini.splitjoin").setup()
+    require("mini.pick").setup()
+
+    utils.n_keymap("<leader>ff", MiniPick.builtin.files, "Find [F]iles")
+    utils.n_keymap("<leader>fs", MiniPick.builtin.grep_live, "[S]earch files")
+    utils.n_keymap("<leader>fb", MiniPick.builtin.buffers, "Find [B]uffers")
+
+    require("which-key").add({
+        mode = "n",
+        { "<leader>f", group = "[F]ind" },
+    })
 end)
