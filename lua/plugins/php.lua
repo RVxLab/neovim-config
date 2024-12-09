@@ -5,6 +5,7 @@ later(function()
     add({
         source = "adalessa/laravel.nvim",
         depends = {
+            "nvim-lua/plenary.nvim",
             "tpope/vim-dotenv",
             "nvim-telescope/telescope.nvim",
             "MunifTanjim/nui.nvim",
