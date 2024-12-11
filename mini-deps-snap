@@ -1,6 +1,6 @@
 return {
   ["FixCursorHold.nvim"] = "1900f89dc17c603eec29960f57c00bd9ae696495",
-  ["blink.cmp"] = "fe568eb568c178127ecc5eccbb2226dde6b41282",
+  ["blink.cmp"] = "ae5a4ce8f7e519e49de7ae6fcadd74547f820a52",
   catppuccin = "faf15ab0201b564b6368ffa47b56feefc92ce3f4",
   ["conform.nvim"] = "f4e8837878fc5712d053ba3091a73d27d96a09e2",
   ["dressing.nvim"] = "fc78a3ca96f4db9f8893bb7e2fd9823e0780451b",
