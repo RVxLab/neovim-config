@@ -1,5 +1,13 @@
 vim.api.nvim_create_user_command("RvxDumpPlugins", function(opts)
-    local plugins = {}
+    -- Mini plugins are hard-coded here because MiniDeps.get_session doesn't pick them up
+    local plugins = {
+        { name = "mini.icons", url = "https://github.com/echasnovski/mini.icons" },
+        { name = "mini.statusline", url = "https://github.com/echasnovski/mini.statusline" },
+        { name = "mini.starter", url = "https://github.com/echasnovski/mini.starter" },
+        { name = "mini.splitjoin", url = "https://github.com/echasnovski/mini.splitjoin" },
+        { name = "mini.pick", url = "https://github.com/echasnovski/mini.pick" },
+    }
+
     local format = opts.fargs[1] or "json"
 
     for _, plugin in ipairs(MiniDeps.get_session()) do
@@ -19,7 +27,7 @@ vim.api.nvim_create_user_command("RvxDumpPlugins", function(opts)
 
     if format == "md" then
         for _, plugin in ipairs(plugins) do
-            output = output .. string.format("[%s](%s)\n", plugin.name, plugin.url)
+            output = output .. string.format("- [%s](%s)\n", plugin.name, plugin.url)
         end
     else
         output = vim.fn.json_encode(plugins)
