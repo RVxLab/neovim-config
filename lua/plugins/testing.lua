@@ -41,7 +41,9 @@ later(function()
     })
 
     utils.n_keymap("<leader>tt", neotest.run.run, "Run the current [t]est")
-    utils.n_keymap("<leader>tf", utils.bind(neotest.run.run, vim.fn.expand("%")), "Run the current [f]ile")
+    utils.n_keymap("<leader>tf", function()
+        neotest.run.run(vim.fn.expand("%"))
+    end, "Run the current [f]ile")
     utils.n_keymap("<leader>tl", neotest.run.run_last, "Run the [l]ast run test")
     utils.n_keymap(
         "<leader>td",
